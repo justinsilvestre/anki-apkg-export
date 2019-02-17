@@ -1,7 +1,7 @@
 {
-  "name": "anki-apkg-export",
+  "name": "anki-apkg-export-multi-field",
   "description": "Generate decks for Anki (spaced repetition software)",
-  "version": "4.0.2",
+  "version": "0.0.0",
   "main": "dist/index.js",
   "dependencies": {
     "jszip": "^3.1.2",
@@ -27,7 +27,7 @@
     "sinon": "^2.3.5",
     "sqlite3": "3.1.13"
   },
-  "author": "ewnd9 <ewndnine@gmail.com>",
+  "author": "Justin Silvestre <justinsilvestre@gmail.com>",
   "keywords": [
     "anki",
     "spaced repetition software",
@@ -37,7 +37,7 @@
   "preferGlobal": "true",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ewnd9/anki-apkg-export.git"
+    "url": "git+https://github.com/justinsilvestre/anki-apkg-export.git"
   },
   "scripts": {
     "build": "babel -d dist src",
