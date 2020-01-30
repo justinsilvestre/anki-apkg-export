@@ -8,14 +8,17 @@ const createField = (name, i) => ({
   size: 20
 });
 
-export default function createTemplate(
-  {
-    fields = ['Front', 'Back'],
-    questionFormat = '{{Front}}',
-    answerFormat = '{{FrontSide}}\n\n<hr id="answer">\n\n{{Back}}',
-    css = '.card {\n font-family: arial;\n font-size: 20px;\n text-align: center;\n color: black;\nbackground-color: white;\n}\n'
-  } = {}
-) {
+export default function createTemplate({
+  fields = ['Front', 'Back'],
+  cards = [
+    {
+      name: 'Card 1',
+      questionFormat: '{{Front}}',
+      answerFormat: '{{FrontSide}}\n\n<hr id="answer">\n\n{{Back}}'
+    }
+  ],
+  css = '.card {\n font-family: arial;\n font-size: 20px;\n text-align: center;\n color: black;\nbackground-color: white;\n}\n'
+} = {}) {
   const conf = {
     nextPos: 1,
     estTimes: true,
@@ -44,17 +47,15 @@ export default function createTemplate(
       sortf: 0,
       latexPre:
         '\\documentclass[12pt]{article}\n\\special{papersize=3in,5in}\n\\usepackage[utf8]{inputenc}\n\\usepackage{amssymb,amsmath}\n\\pagestyle{empty}\n\\setlength{\\parindent}{0in}\n\\begin{document}\n',
-      tmpls: [
-        {
-          name: 'Card 1',
-          qfmt: questionFormat,
-          did: null,
-          bafmt: '',
-          afmt: answerFormat,
-          ord: 0,
-          bqfmt: ''
-        }
-      ],
+      tmpls: cards.map(({ name, questionFormat, answerFormat }, ord) => ({
+        name,
+        qfmt: questionFormat,
+        did: null,
+        bafmt: '',
+        afmt: answerFormat,
+        ord,
+        bqfmt: ''
+      })),
       latexPost: '\\end{document}',
       type: 0,
       id: 1388596687391,

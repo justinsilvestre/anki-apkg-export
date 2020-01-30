@@ -61,7 +61,7 @@ export default class {
     this.media.push({ filename, data });
   }
 
-  addCard(fields, { tags, sortField } = {}) {
+  addCard(fields, { tags, sortField, due = 179 } = {}) {
     const { topDeckId, topModelId, separator } = this;
     const joinedFields = fields.join(separator);
     const now = Date.now();
@@ -99,7 +99,7 @@ export default class {
         ':usn': -1, // integer not null,
         ':type': 0, // integer not null,
         ':queue': 0, // integer not null,
-        ':due': 179, // integer not null,
+        ':due': due, // integer not null,
         ':ivl': 0, // integer not null,
         ':factor': 0, // integer not null,
         ':reps': 0, // integer not null,
