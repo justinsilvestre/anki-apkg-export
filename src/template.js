@@ -17,7 +17,8 @@ export default function createTemplate({
       answerFormat: '{{FrontSide}}\n\n<hr id="answer">\n\n{{Back}}'
     }
   ],
-  css = '.card {\n font-family: arial;\n font-size: 20px;\n text-align: center;\n color: black;\nbackground-color: white;\n}\n'
+  css = '.card {\n font-family: arial;\n font-size: 20px;\n text-align: center;\n color: black;\nbackground-color: white;\n}\n',
+  sortField = 0
 } = {}) {
   const conf = {
     nextPos: 1,
@@ -44,7 +45,7 @@ export default function createTemplate({
       usn: -1,
       req: [[0, 'all', [0]]],
       flds: fields.map(createField),
-      sortf: 0,
+      sortf: sortField,
       latexPre:
         '\\documentclass[12pt]{article}\n\\special{papersize=3in,5in}\n\\usepackage[utf8]{inputenc}\n\\usepackage{amssymb,amsmath}\n\\pagestyle{empty}\n\\setlength{\\parindent}{0in}\n\\begin{document}\n',
       tmpls: cards.map(({ name, questionFormat, answerFormat }, ord) => ({

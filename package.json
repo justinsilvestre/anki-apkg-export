@@ -1,7 +1,7 @@
 {
   "name": "anki-apkg-export-multi-field",
   "description": "Generate decks for Anki (spaced repetition software)",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.js",
   "dependencies": {
     "jszip": "^3.1.2",

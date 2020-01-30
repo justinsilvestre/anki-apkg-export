@@ -22,7 +22,9 @@ export default class {
     deck.name = this.deckName;
     deck.id = topDeckId;
     decks[topDeckId + ''] = deck;
-    this._update('update col set decks=:decks where id=1', { ':decks': JSON.stringify(decks) });
+    this._update('update col set decks=:decks where id=1', {
+      ':decks': JSON.stringify(decks)
+    });
 
     const models = this._getInitialRowValue('col', 'models');
     const model = getLastItem(models);
@@ -30,7 +32,9 @@ export default class {
     model.did = this.topDeckId;
     model.id = topModelId;
     models[`${topModelId}`] = model;
-    this._update('update col set models=:models where id=1', { ':models': JSON.stringify(models) });
+    this._update('update col set models=:models where id=1', {
+      ':models': JSON.stringify(models)
+    });
   }
 
   save(options) {
@@ -61,7 +65,7 @@ export default class {
     this.media.push({ filename, data });
   }
 
-  addCard(fields, { tags, sortField, due = 179 } = {}) {
+  addCard(fields, { tags, due = 179 } = {}) {
     const { topDeckId, topModelId, separator } = this;
     const joinedFields = fields.join(separator);
     const now = Date.now();
@@ -82,7 +86,7 @@ export default class {
       ':usn': -1, // integer not null,
       ':tags': strTags, // text not null,
       ':flds': joinedFields, // text not null,
-      ':sfld': sortField || fields[0], // integer not null,
+      ':sfld': fields[0], // integer not null,
       ':csum': this._checksum(joinedFields), //integer not null,
       ':flags': 0, // integer not null,
       ':data': '' // text not null,
